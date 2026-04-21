@@ -1,0 +1,24 @@
+services:
+  neuralscope:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: neuralscope:latest
+    ports:
+      - "3000:3000"
+      - "8000:8000"
+    environment:
+      NEURALSCOPE_HOST: 0.0.0.0
+      NEURALSCOPE_PORT: 8000
+    volumes:
+      - hf_cache:/root/.cache/huggingface
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+volumes:
+  hf_cache:
