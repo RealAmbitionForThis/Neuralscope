@@ -1,5 +1,6 @@
 import BackendConnection from "@/components/settings/BackendConnection";
 import TokenManager from "@/components/settings/TokenManager";
+import RunPodPanel from "@/components/runpod/RunPodPanel";
 
 export default function SettingsPage() {
   return (
@@ -7,12 +8,12 @@ export default function SettingsPage() {
       <div>
         <h1 className="text-2xl font-semibold">Settings</h1>
         <p className="text-sm text-muted mt-1">
-          Backend connection and access tokens. RunPod integration arrives in
-          phase 4.
+          Backend connection, access tokens, and RunPod pod management.
         </p>
       </div>
       <BackendConnection />
       <TokenManager />
+      <RunPodPanel />
     </div>
   );
 }

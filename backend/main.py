@@ -14,7 +14,16 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.config import settings
-from backend.routes import analyze, export, model, sae, steering, surgery, system
+from backend.routes import (
+    analyze,
+    export,
+    model,
+    runpod,
+    sae,
+    steering,
+    surgery,
+    system,
+)
 from backend.services.gpu_monitor import get_gpu_info
 from backend.ws.manager import ws_manager
 
@@ -68,6 +77,7 @@ app.include_router(sae.router)
 app.include_router(surgery.router)
 app.include_router(steering.router)
 app.include_router(export.router)
+app.include_router(runpod.router)
 
 
 @app.websocket("/ws")
