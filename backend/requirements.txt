@@ -1,5 +1,4 @@
-# Phase 1: backend core only.
-# Later phases add nnsight, sae-lens, umap-learn, scikit-learn, scipy, runpod, etc.
+# Phase 1-4 backend dependencies.
 fastapi>=0.115.0
 uvicorn[standard]>=0.30.0
 pydantic>=2.7.0
@@ -13,8 +12,14 @@ safetensors>=0.4.0
 huggingface-hub>=0.23.0
 
 # Quantization (optional at runtime; CPU users without a CUDA build should skip).
-# Kept here so GPU deployments install cleanly by default.
 bitsandbytes>=0.43.0; platform_system != "Darwin"
 
 numpy>=1.26.0
+scipy>=1.13.0
+scikit-learn>=1.5.0
 aiofiles>=24.1.0
+httpx>=0.27.0
+
+# Phase 3: SAE feature decomposition + UMAP
+sae-lens>=6.0.0
+umap-learn>=0.5.6

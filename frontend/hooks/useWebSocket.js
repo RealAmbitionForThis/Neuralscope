@@ -27,6 +27,21 @@ function handleEvent(event, data, store) {
   }
   if (event === "model:unloaded") {
     store.unloadModel();
+    return;
+  }
+  if (event === "analyze:progress") {
+    store.updateAnalysisProgress({
+      progress: data.progress ?? 0,
+      message: data.message ?? "",
+    });
+    return;
+  }
+  if (event === "analyze:complete") {
+    // Results are fetched via REST; this is just a signal.
+    return;
+  }
+  if (event === "analyze:error") {
+    store.failAnalysis(data.message || "Analysis failed");
   }
 }
 
