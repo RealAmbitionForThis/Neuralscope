@@ -42,6 +42,14 @@ function handleEvent(event, data, store) {
   }
   if (event === "analyze:error") {
     store.failAnalysis(data.message || "Analysis failed");
+    return;
+  }
+  if (event === "sae:progress" || event === "sae:label_progress") {
+    // Currently only used for status indication; store could be extended later.
+    return;
+  }
+  if (event === "sae:error") {
+    console.warn("sae error:", data.message);
   }
 }
 
